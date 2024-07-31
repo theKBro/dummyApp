@@ -26,7 +26,7 @@ jobs:
         env:
           NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: overwrite with correct credentials (this is not necessary if the PAT is already in the nuget.config)
-        run: dotnet nuget update source myPrivateRepo --password ${{secrets.GITHUB_TOKEN}} --store-password-in-clear-text --configfile nuget.config
+        run: dotnet nuget update source myPrivateRepo --username dummy --password ${{secrets.GITHUB_TOKEN}} --store-password-in-clear-text --configfile nuget.config
       - name: Build with dotnet
         run: dotnet build -c Release
       - name: run
